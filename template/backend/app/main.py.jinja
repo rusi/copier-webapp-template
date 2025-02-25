@@ -1,0 +1,29 @@
+from collections.abc import AsyncGenerator
+from contextlib import asynccontextmanager
+
+from fastapi import FastAPI
+
+from app.core.scheduler import start_scheduler, stop_scheduler
+from app.routes.get_random_number import router as random_router
+
+
+@asynccontextmanager
+async def lifespan(app: FastAPI) -> AsyncGenerator[None, None]:
+    """Start and stop the scheduler."""
+    # Startup
+    start_scheduler()
+    yield
+    # Shutdown
+    stop_scheduler()
+
+
+app = FastAPI(lifespan=lifespan)
+
+
+app.include_router(random_router, prefix="/api/v1")
+
+
+@app.get("/")
+def root() -> dict[str, str]:
+    """Root endpoint."""
+    return {"message": "{{app_name}} API is running"}

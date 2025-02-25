@@ -1,0 +1,49 @@
+#!/bin/bash
+
+set -e
+
+IMAGE_NAME={{app_name}}
+# PLATFORMS="linux/amd64,linux/arm64,linux/arm/v7"
+PLATFORMS="linux/arm64"
+TAG=latest
+DOCKERFILE=Dockerfile
+REGISTRY=
+
+build_local() {
+    docker build -t ${IMAGE_NAME}:${TAG} --platform linux/arm64 -f "docker/${DOCKERFILE}" .
+    echo "Docker image built: ${IMAGE_NAME}:${TAG}"
+}
+
+build_multiplatform() {
+    docker buildx create --use --name platform-builder || true
+    docker buildx build --platform ${PLATFORMS} \
+        --output=type=registry,registry.insecure=true \
+        -t "${REGISTRY}${IMAGE_NAME}:${TAG}" \
+        -f "docker/${DOCKERFILE}" \
+        --push .
+    echo "Docker images built and pushed for multiple platforms: ${REGISTRY}${IMAGE_NAME}:${TAG}"
+}
+
+build_artifacts() {
+    cd frontend && yarn build && cd ..
+    cd backend && uv export -o requirements.txt --no-hashes && cd ..
+    # cd backend && pdm export -o requirements.txt --without-hashes && cd ..
+}
+
+build_artifacts "$1"
+
+if [[ "$1" == "" ]] || [[ "$1" == "local" ]]; then
+    build_local
+elif [[ "$1" == "push" ]]; then
+    build_multiplatform
+else
+    echo "Usage: $0 [local|push]"
+    exit 1
+fi
+
+# to debug the image:
+# docker run -it --rm -p 3000:3000 -p 8080:8080 --entrypoint /bin/bash  {{app_name}}:latest
+
+# to run the image:
+# docker run --rm --name {{app_name}} -p 3000:3000 -p 8080:8080 {{app_name}}:latest
+# docker run -d --name {{app_name}} -p 80:3000 -p 8080:8080 --restart=always --privileged --cap-add SYS_TIME {{REGISTRY}}{{app_name}}:latest

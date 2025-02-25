@@ -1,0 +1,56 @@
+# {{app_name}} Backend
+
+The backend is built with FastAPI and Uvicorn.
+
+## Setting Up the Development Environment (Python)
+- **Environment Manager**:
+  - [uv](https://docs.astral.sh/uv/)
+  - [PDM](https://pdm.fming.dev/)
+- **Linter**:
+  - [Ruff](https://github.com/astral-sh/ruff)
+- **Test Framework**:
+  - [Pytest](https://docs.pytest.org/en/latest/)
+
+**Steps**:
+1. Install **uv**:
+   ```bash
+   brew install uv
+   ```
+
+or install **PDM**:
+   ```bash
+   pipx install pdm
+   # or
+   pip install pdm
+   # or
+   brew install pdm
+   ```
+
+2. Initialize the project:
+   ```bash
+   cd backend
+   uv sync
+   # or
+   pdm install
+   ```
+
+3. Run the backend:
+   ```bash
+   cd backend
+   fastapi dev app/main.py
+   # or
+   pdm run uvicorn app.main:app --host 0.0.0.0 --port 8000
+   ```
+
+**VSCode Extensions for Backend**:
+- **Python**: Provides IntelliSense and debugging.
+- **Pylance**: Enhances Python support with type checking.
+- **Ruff**: Integrates the `ruff` linter.
+- **Pytest**: Supports testing directly from the editor.
+
+## ** Testing **
+
+```bash
+cd backend
+pytest
+```

@@ -1,0 +1,15 @@
+# .dockerignore
+*
+!frontend/src/
+!frontend/static/
+!frontend/build/
+!frontend/*.json
+!frontend/*.js
+!frontend/*.ts
+!frontend/yarn.lock
+!backend/app/
+!backend/data/
+!backend/requirements.txt
+!backend/pdm.lock
+!backend/pyproject.toml
+!docker/

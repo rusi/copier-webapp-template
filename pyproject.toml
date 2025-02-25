@@ -1,0 +1,26 @@
+[project]
+name = "CopierPythonTemplate"
+version = "0.1.0"
+description = "A simple python project template"
+authors = [
+    {name = "Ruslan Hristov", email = "rusi@me.com"},
+]
+dependencies = []
+requires-python = ">=3.10"
+readme = "README.md"
+license = {text = "MIT"}
+
+[tool.pdm.dev-dependencies]
+dev = [
+    "pytest<9.0.0,>=8.3.3",
+    "ruff<1.0.0,>=0.6.9",
+    "coverage[toml]<8.0.0,>=7.6.1",
+    "pytest-copie<1.0.0,>=0.2.0",
+    "pyprojroot<1.0.0,>=0.3.0",
+]
+
+[tool.pdm]
+distribution = false
+
+[tool.pdm.build]
+includes = []

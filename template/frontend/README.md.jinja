@@ -1,0 +1,93 @@
+# {{app_name}} Frontend
+
+The frontend is built with SvelteKit.
+
+## Frontend Environment (Svelte)
+
+- **Environment Manager**: [nvm](https://github.com/nvm-sh/nvm)
+- **Linter**: `eslint` (with Svelte plugin)
+- **Test Framework**: `vitest`
+
+**Steps**:
+1. Install **nvm**:
+   ```bash
+   brew install nvm
+   mkdir ~/.nvm
+   ```
+   - Add following line to your profile. (.profile or .zshrc or .zprofile)
+   ```bash
+   # NVM
+   export NVM_DIR=~/.nvm
+   source $(brew --prefix nvm)/nvm.sh
+   ```
+   - Close and open your terminal again. Or Choose one from the following command once for reload your profile. (.profile or .zshrc or .zprofile)
+   ```bash
+   source ~/.zshrc
+   # or
+   source ~/.profile
+   # or
+   source ~/.zprofile
+   ```
+
+2. Install **Node.js** using `nvm`:
+   ```bash
+   nvm install --lts
+   nvm use --lts
+   ```
+
+3. Install **yarn** via Homebrew:
+   ```bash
+   brew install yarn
+   ```
+
+4. Install dependencies:
+   ```bash
+   cd frontend
+   yarn install
+   yarn playwright install
+   ```
+
+### **Notes**
+- Note: the frontend was created using the following command:
+  ```bash
+  npx sv create frontend
+  cd frontend
+  yarn install
+  yarn dev
+
+  # add linting
+  npm install eslint eslint-plugin-svelte eslint-config-prettier --save-dev
+  npx eslint --init
+
+  # add testing
+  npm install vitest @testing-library/svelte --save-dev
+  ```
+
+**VSCode Extensions for Frontend**:
+- **Svelte for VSCode**: Adds support for `.svelte` files.
+- **ESLint**: Integrates linting.
+- **Prettier**: Formats code automatically.
+
+### **Running the Frontend**
+   ```bash
+   cd frontend
+   yarn dev --open
+   ```
+
+### **Running Tests**
+   ```bash
+   cd frontend
+   npx vitest
+   # or
+   npx vitest --watch
+   # or
+   npm run test
+   # or
+   npm run test -- --watch
+   ```
+
+### **Check Coverage**
+   ```bash
+   cd frontend
+   npx vitest --coverage
+   ```
