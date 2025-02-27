@@ -1,10 +1,10 @@
-import { defineConfig } from '@playwright/test';
+import { defineConfig } from "@playwright/test";
 
 export default defineConfig({
   webServer: {
-    command: 'npm run build && npm run preview',
-    port: 4173
+    command: "npm run build && npm run preview",
+    port: 4173,
   },
 
-  testDir: 'tests/e2e'
+  testDir: 'test/e2e'
 });

@@ -1,10 +1,10 @@
 {
-    "[svelte]": {
-        "editor.defaultFormatter": "svelte.svelte-vscode"
-    },
-    "eslint.enable": true,
-    "eslint.workingDirectories": ["${workspaceFolder}/frontend"],
-    "workbench.editorAssociations": {
-        "*.md": "vscode.markdown.preview.editor"
-    }
+  "[svelte]": {
+    "editor.defaultFormatter": "svelte.svelte-vscode"
+  },
+  "eslint.enable": true,
+  "eslint.workingDirectories": ["${workspaceFolder}/frontend"],
+  "workbench.editorAssociations": {
+    "*.md": "vscode.markdown.preview.editor"
+  }
 }

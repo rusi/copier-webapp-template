@@ -2,6 +2,20 @@
 
 The frontend is built with SvelteKit.
 
+## Tech Stack
+
+- **Framework**: [SvelteKit](https://svelte.dev/docs/kit/introduction)
+- **Language**: [TypeScript](https://www.typescriptlang.org/)
+- **Styling**: [Tailwind CSS](https://tailwindcss.com/)
+- **State Management**: [Svelte Context API](https://svelte.dev/docs/stores)
+- **Routing**: [SvelteKit Routing](https://svelte.dev/docs/kit/routing)
+
+### SvelteKit
+
+```sh
+npx sv create my-app
+```
+
 ## Frontend Environment (Svelte)
 
 - **Environment Manager**: [nvm](https://github.com/nvm-sh/nvm)
@@ -52,6 +66,10 @@ The frontend is built with SvelteKit.
   ```bash
   npx sv create frontend
   cd frontend
+
+  yarn add -D flowbite-svelte flowbite
+  yarn add -D flowbite-svelte-icons
+
   yarn install
   yarn dev
 
@@ -67,6 +85,31 @@ The frontend is built with SvelteKit.
 - **Svelte for VSCode**: Adds support for `.svelte` files.
 - **ESLint**: Integrates linting.
 - **Prettier**: Formats code automatically.
+
+
+## Developing
+
+Once you've installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
+
+```bash
+npm run dev
+
+# or start the server and open the app in a new browser tab
+npm run dev -- --open
+```
+
+## Building
+
+To create a production version of the app:
+
+```bash
+npm run build
+```
+
+You can preview the production build with `npm run preview`.
+
+> To deploy the app, you may need to install an [adapter](https://svelte.dev/docs/kit/adapters) for your target environment.
+
 
 ### **Running the Frontend**
    ```bash

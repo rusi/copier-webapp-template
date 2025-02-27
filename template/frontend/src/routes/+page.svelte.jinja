@@ -1,12 +1,24 @@
 <script>
-    import { Button } from 'flowbite-svelte';
+    import { Button, DarkMode } from 'flowbite-svelte';
     import Clock from '$lib/components/clock.svelte';
     import Random from '$lib/components/random.svelte';
+    import { onMount } from 'svelte';
+
+    onMount(() => {
+        // Set dark mode as default
+        document.documentElement.classList.add('dark');
+    });
 </script>
 
-<div class="flex flex-col items-center justify-center min-h-screen">
-    <h1 class="text-4xl font-bold mb-4">Welcome {{app_name}}</h1>
-    <p class="text-gray-600">Get started by editing your application</p>
-    <Clock />
-    <Random />
+
+<div class="dark:bg-gray-900 dark:text-white relative">
+    <div class="absolute top-2 right-2">
+        <DarkMode />
+    </div>
+    <div class="flex flex-col items-center justify-center min-h-screen dark:bg-gray-900 dark:text-white">
+        <h1 class="text-4xl font-bold mb-4">Welcome {{app_name}}</h1>
+        <p class="dark:text-gray-300">Get started by editing your application</p>
+        <Clock />
+        <Random />
+    </div>
 </div>
